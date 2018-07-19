@@ -1,4 +1,4 @@
-..<!-- 登录用户信息 -->
+<!-- 登录用户信息 -->
 
 <!DOCTYPE html>
 <html>
@@ -8,6 +8,7 @@
 	<script src="jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
   	<script src="paging.js" type="text/javascript" charset="utf-8"></script>
   	<script type="text/javascript" src="zeroModal.min.js" charset="utf-8"></script>
+	<script src="questions_checkBox.js"></script>
   	<link rel="icon" href="favicon.gif" type="image/x-icon" />
   	<link rel="stylesheet" href="paging.css">
   	<link rel="stylesheet" href="questions.css">
@@ -28,15 +29,75 @@
 		body::-o-scrollbar {display:none}
 		body::-ms-scrollbar {display:none}
 		body::-moz-scrollbar {display:none}
+		.checkb{
+			width: 100%;
+			/*height: 50px;*/
+			height: 44px;
+			position: relative;
+			overflow: hidden;
+		}
+		.checkb ul {list-style-type: none;}
+
+		.portrait li {
+			display: -webkit-box;
+			padding: 4px 0;
+		}
+		.transverse  li{
+			display: inline-block;
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
+			width: 180px;
+		}
+		.down{
+			background: url(down.png)no-repeat;
+			position: absolute;
+			bottom: 16px;
+			right: 20px;
+			width: 14px;
+			height: 9px;
+			cursor: pointer;
+
+		}
+		.up{
+			background: url(up.png)no-repeat;
+			position: absolute;
+			bottom: 0;
+			right: 20px;
+			width: 14px;
+			height: 9px;
+			cursor: pointer;
+			display: none;
+		}
   	</style>
+	<script>
+        $(function () {
+            $("#down").click(function () {
+                $(this).hide();
+                $(".checkb").animate({
+                    height:'150px',
+                },"fast");
+                // $(".checkb").css("height","150px");
+                $("#up").show();
+            });
+            $("#up").click(function () {
+                $(this).hide();
+                $(".checkb").animate({
+                    height:'44px',
+                    overflow:"hidden"
+                },"fast");
+                // $(".checkb").css({
+                //     "height":"50px",
+                //     "overflow":"hidden"
+                // });
+                $("#down").show();
+            });
+        });
+
+	</script>
 </head>
 	
 <body>
-	
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -357,33 +418,82 @@ body {
 						onblur="if(this.value == '') this.value = this.defaultValue" />
 						<button type="submit" class="searchbtn"></button>
 					</form>
-					<button onclick="userNotnull();" class="consultation">我要咨询</button>
+					<button onclick="userNotnull();" class="consultation" >我要咨询</button>
 				</div>
 				<!-- 选择类型 -->
-				<div class="search_choose" style="height: 40px;">
-					<ul>
-						
-							<li style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
-							<a href="search?majorCategory=040001">choose_question_type</a>
+				<!--<div class="search_choose" style="height: 40px;">-->
+					<!--<ul>-->
+						<!---->
+							<!--<li style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">-->
+							<!--<a href="search?majorCategory=040001">choose_question_type</a>-->
+							<!--</li>-->
+						<!---->
+							<!--<li style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">-->
+							<!--<a href="search?majorCategory=040002">choose_question_type</a>-->
+							<!--</li>-->
+						<!---->
+							<!---->
+						<!---->
+					<!--</ul>-->
+					<!--<div class="searchchoose_up"></div>-->
+					<!--<div class="searchchoose_down"></div>-->
+				<!--</div>-->
+				<div class="checkb">
+					<form>
+						<ul class="portrait">
+							<li>
+								<ul class="transverse">
+									<li><input type="checkbox" value="" name="" id="1">发票系统故障及操作指导</li>
+									<li> <input type="checkbox" value="" name="" id="2">发票领购</li>
+									<li> <input type="checkbox" value="" name="" id="3">发票代开</li>
+									<li> <input type="checkbox" value="" name="" id="4">发票开具</li>
+									<li> <input type="checkbox" value="" name="" id="5">红色增值税发票开具</li>
+									<li> <input type="checkbox" value="" name="" id="6">申报有误能否作废</li>
+								</ul>
 							</li>
-						
-							<li style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
-							<a href="search?majorCategory=040002">choose_question_type</a>
+							<li>
+								<ul class="transverse">
+									<li> <input type="checkbox" value="" name="" id="7">一般纳税人资格</li>
+									<li> <input type="checkbox" value="" name="" id="8">辅导期一般纳税人资格</li>
+									<li><input type="checkbox" value="" name="" id="9">专用发票认证抵扣</li>
+									<li><input type="checkbox" value="" name="" id="10">小规模纳税人增值税起征点是否有调整</li>
+									<li><input type="checkbox" value="" name="" id="11">认定为一般纳税人之后是否可以转为小规模纳税人</li>
+									<li><input type="checkbox" value="" name="" id="12">小规模纳税人自行开具的增值税专用发票如何填写申报表</li>
+								</ul>
 							</li>
-						
-							
-						
-					</ul>
-					<div class="searchchoose_up"></div>
-					<div class="searchchoose_down"></div>
+							<li>
+								<ul class="transverse">
+									<li> <input type="checkbox" value="" name="" id="13">注销登记</li>
+									<li><input type="checkbox" value="" name="" id="14">发票检查</li>
+									<li><input type="checkbox" value="" name="" id="15">专用发票丢失</li>
+									<li><input type="checkbox" value="" name="" id="16">征收率</li>
+									<li><input type="checkbox" value="" name="" id="17">非国税业务</li>
+									<li><input type="checkbox" value="" name="" id="18">信用等级</li>
+								</ul>
+							</li>
+							<li>
+								<ul class="transverse">
+									<li> <input type="checkbox" value="" name="" id="19">营改增</li>
+									<li><input type="checkbox" value="" name="" id="20">金税管理</li>
+									<li><input type="checkbox" value="" name="" id="21">进出口税收</li>
+									<li><input type="checkbox" value="" name="" id="22">征收管理</li>
+									<li><input type="checkbox" value="" name="" id="23">发票保管</li>
+								</ul>
+							</li>
+
+						</ul>
+
+					</form>
+					<div class="down" id="down" ></div>
+					<div class="up" id="up"></div>
 				</div>
 			</div>
 			<div class="liuan_center_tab">
 				<!-- 分页 start -->
 				<div class="tab_a" id="tab_b" style="height: 1100px;">
 				  	<ul class="tabOne tabOneys" id="tabOne">
-				    				<li><a class="active" style="font-size:20px;">最新咨询</a></li>
-				    				<li><a style="font-size:16px;" href="#">热门咨询</a></li>
+				    				<li id="newsQues" ><a class="active" style="font-size:20px;">最新咨询</a></li>
+				    				<li id="hotQues" ><a style="font-size:16px;" href="#">热门咨询</a></li>
 				    				<li><a style="font-size:16px;" href="#">悬赏咨询</a></li>
 				  	</ul>
 				  	
@@ -396,13 +506,13 @@ body {
 				  		<!-- latest start -->
 				    		<div id="latestQuesContainer">
 					    		<div>
-						    		<p class="question_title"><b>最新咨询</b></p>
+						    		<p class="question_title" ><b>最新咨询</b></p>
 					    		</div>
 				    			<div id="quesContent" class="quesContent">
 					    			<div class="gary">
 									<div class="pink"></div>
 								</div>
-				    				
+				    				<div id="que_body">
 									<ul style="border-bottom:1px dashed #ccc;height: 70px;">
 										<li>
 											<a href="questions/details.html"> title</a>
@@ -431,8 +541,10 @@ body {
 											<span>click_to_collect</span>
 										</li>
 									</ul>
+									</div>
+									<div id="que_body1" style="display: none"></div>
 							</div>
-				    		<div id="quesPaging" class="box"></div>
+				    		<!--<div id="quesPaging" class="box"></div>-->
 			    		</div>
 			    		<!-- latest end -->
 		    		</div>
@@ -441,7 +553,188 @@ body {
 		</div>
 	</div>
 	<!-- 中间部分start -->
-		
+
+		<script>
+			$(function () {
+                var que_body=$("#que_body");
+                var count=0;
+                que_body.empty();
+                $.get("question.php",function (data) {
+                    //console.log(data);
+					var a=JSON.parse(data);
+					//count=a.length;
+                    show_data(a);
+
+                });
+               $("#newsQues").click(function () {
+                   que_body.empty();
+                   $.get("phpDoc/newsQues.php",function (data) {
+                       console.log(data);
+                       var a=JSON.parse(data);
+                       show_data(a);
+
+                   });
+                });
+               $("#hotQues").click(function () {
+                   que_body.empty();
+                   $.get("phpDoc/hotQues.php",function (data) {
+                       console.log(data);
+                       var a=JSON.parse(data);
+                       show_data(a);
+
+                   });
+               });
+                $("#1").click(function () {
+                    var aaa = $("#1").prop("checked");
+                    if(aaa){
+                        f1();
+                    };
+                });
+                $("#2").click(function () {
+                    var aaa = $("#2").prop("checked");
+                    if(aaa){
+                        f2();
+                    };
+                });
+                $("#3").click(function () {
+                    var aaa = $("#3").prop("checked");
+                    if(aaa){
+                        f3();
+                    };
+                });
+                $("#4").click(function () {
+                    var aaa = $("#4").prop("checked");
+                    if(aaa){
+                        f4();
+                    };
+                });
+                $("#5").click(function () {
+                    var aaa = $("#5").prop("checked");
+                    if(aaa){
+                        f5();
+                    };
+                });
+                $("#6").click(function () {
+                    var aaa = $("#6").prop("checked");
+                    if(aaa){
+                        f6();
+                    };
+                });
+                $("#7").click(function () {
+                    var aaa = $("#7").prop("checked");
+                    if(aaa){
+                        f7();
+                    };
+                });
+                $("#8").click(function () {
+                    var aaa = $("#8").prop("checked");
+                    if(aaa){
+                        f8();
+                    };
+                });
+                $("#9").click(function () {
+                    var aaa = $("#9").prop("checked");
+                    if(aaa){
+                        f9();
+                    };
+                });
+                $("#10").click(function () {
+                    var aaa = $("#10").prop("checked");
+                    if(aaa){
+                        f10();
+                    };
+                });
+                $("#11").click(function () {
+                    var aaa = $("#11").prop("checked");
+                    if(aaa){
+                        f11();
+                    };
+                });
+                $("#12").click(function () {
+                    var aaa = $("#12").prop("checked");
+                    if(aaa){
+                        f12();
+                    };
+                });
+                $("#13").click(function () {
+                    var aaa = $("#13").prop("checked");
+                    if(aaa){
+                        f13();
+                    };
+                });
+                $("#14").click(function () {
+                    var aaa = $("#14").prop("checked");
+                    if(aaa){
+                        f14();
+                    };
+                });
+                $("#15").click(function () {
+                    var aaa = $("#15").prop("checked");
+                    if(aaa){
+                        f15();
+                    };
+                });
+                $("#16").click(function () {
+                    var aaa = $("#16").prop("checked");
+                    if(aaa){
+                        f16();
+                    };
+                });
+                $("#17").click(function () {
+                    var aaa = $("#17").prop("checked");
+                    if(aaa){
+                        f17();
+                    };
+                });
+                $("#19").click(function () {
+                    var aaa = $("#18").prop("checked");
+                    if(aaa){
+                        f18();
+                    };
+                });
+                $("#19").click(function () {
+                    var aaa = $("#19").prop("checked");
+                    if(aaa){
+                        f19();
+                    };
+                });
+                $("#20").click(function () {
+                    var aaa = $("#20").prop("checked");
+                    if(aaa){
+                        f20();
+                    };
+                });
+                $("#21").click(function () {
+                    var aaa = $("#21").prop("checked");
+                    if(aaa){
+                        f21();
+                    };
+                });
+                $("#22").click(function () {
+                    var aaa = $("#22").prop("checked");
+                    if(aaa){
+                        f22();
+                    };
+                });
+                $("#23").click(function () {
+                    var aaa = $("#23").prop("checked");
+                    if(aaa){
+                        f23();
+                    };
+                });
+
+
+
+                //alert("加载我！");
+                // $("#testQues").click(function () {
+                //
+                //
+                // });
+                // $("#deleteQues").click(function () {
+					// que_body.empty();
+                // });
+            });
+		</script>
 	<!--  尾部 start -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

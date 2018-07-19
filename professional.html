@@ -15,6 +15,7 @@
 	charset="utf-8"></script>
 <script type="text/javascript"
 	src="zeroModal.min.js" charset="utf-8"></script>
+	<script src="jsDocs/sharePro.js"></script>
 <link rel="stylesheet" href="zeroModal.css" />
 
 
@@ -389,14 +390,14 @@ body {
 						<ul style="background: none">
 							
 								
-									<li><span>专业解读</span></li>
+									<li id="show_p"><span>专业解读</span></li>
 								
 								
 							
 						</ul>
 					</div>
 					<div id="exSharingContainer">
-						<div class="exSharingContent">
+						<div class="exSharingContent" >
 							
 								<ul class="ex_main_left_content_ul uls clearfix">
 									<li class="center_top">
@@ -420,8 +421,9 @@ body {
 							
 								
 						</div>
-						<div id="exSharingPage" class="box"></div>
+
 					</div>
+					<!--<div id="exSharingPage" class="box"></div>-->
 				</div>
 			</div>
 		</div>
@@ -433,6 +435,19 @@ body {
 			value="10" name="size" type="hidden"> <input
 			value="1" name="type" type="hidden" />
 	</form>
+	<script>
+        $(function () {
+            var s_body=$("#exSharingContainer");
+            s_body.empty();
+            $.get("question.php",function (data) {
+                console.log(data);
+                var a=JSON.parse(data);
+                //count=a.length;
+                show_ques(a);
+
+            });
+        })
+	</script>
 
 	<!-- 底部内容start -->
 	

@@ -18,6 +18,7 @@
 	charset="utf-8"></script>
 <script type="text/javascript"
 	src="zeroModal.min.js" charset="utf-8"></script>
+	<script src="jsDocs/sharePro.js"></script>
 <link rel="stylesheet" href="zeroModal.css" />
 
 
@@ -390,12 +391,12 @@ body {
 					<div class="ex_main_left_content_header">
 							
 						<ul style="background: none">
-									<li><span>经验分享</span></li>
+									<li id="show_share"><span>经验分享</span></li>
 								
 						</ul>
 					</div>
 					<div id="exSharingContainer">
-						<div class="exSharingContent">
+						<div class="exSharingContent" >
 							
 								<ul class="ex_main_left_content_ul uls clearfix">
 									<li class="center_top">
@@ -419,8 +420,10 @@ body {
 							
 								
 						</div>
-						<div id="exSharingPage" class="box"></div>
+
 					</div>
+					<div id="exSharingContainer1" class="ex_container" style="display: none"></div>
+					<!--<div id="exSharingPage" class="box"></div>-->
 				</div>
 			</div>
 		</div>
@@ -432,6 +435,20 @@ body {
 			value="10" name="size" type="hidden"> <input
 			value="0" name="type" type="hidden" />
 	</form>
+	<script>
+		$(function () {
+            var s_body=$("#exSharingContainer");
+            s_body.empty();
+            $.get("question.php",function (data) {
+                console.log(data);
+                var a=JSON.parse(data);
+                //count=a.length;
+                show_ques(a);
+
+            });
+
+        })
+	</script>
 
 	<!-- 底部内容start -->
 	

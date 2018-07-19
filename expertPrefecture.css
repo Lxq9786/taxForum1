@@ -310,6 +310,10 @@ button{
 	height: 27px;
 	line-height: 27px;
 }
+.ex_container{
+	border: 1px solid #ccc;
+	margin-top: 20px;
+}
 #exSharingContainer{
 	border: 1px solid #ccc;
 	 margin-top: 20px;
